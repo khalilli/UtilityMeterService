@@ -19,8 +19,12 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -31,6 +35,7 @@ import java.util.UUID;
         @Index(name = "idx_meter_number", columnList = "meter_number")
 })
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Meter {
@@ -62,4 +67,12 @@ public class Meter {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "meter")
     private List<MeterReading> meterReadings = new ArrayList<>();
+
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDate createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private LocalDate updatedAt;
 }

@@ -1,0 +1,40 @@
+databaseChangeLog:
+  # --- TYPES --
+  - changeSet:
+      id: 1
+      author: Asmar
+      changes:
+        - sqlFile:
+            path: types/create_meter_status_enum.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: 2
+      author: Asmar
+      changes:
+        - sqlFile:
+            path: types/create_meter_type_enum.sql
+            relativeToChangelogFile: true
+
+  # --- TABLES ---
+  - changeSet:
+      id: 3
+      author: Asmar
+      changes:
+        - sqlFile:
+            path: create_user_table.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: 4
+      author: Asmar
+      changes:
+        - sqlFile:
+            path: create_meter_table.sql
+            relativeToChangelogFile: true
+
+  - changeSet:
+      id: 5
+      author: Asmar
+      changes:
+        - sqlFile:
+            path: create_meter_reading_table.sql
+            relativeToChangelogFile: true

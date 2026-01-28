@@ -1,3 +1,106 @@
 spring:
   application:
     name: utility-meter-service
+  config:
+    activate:
+      on-profile: docker
+
+  datasource:
+    url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
+    username: ${PGUSER}
+    password: ${PGPASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc.time.zone: UTC
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+    sql:
+      init:
+        mode: never
+# API Documentation
+springdoc:
+  show-actuator: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui
+    url: /api-docs
+  api-docs:
+    path: /api-docs
+  server-url: ${SWAGGER_BASE_URL:http://localhost:8080/utility-meter-service}
+
+server:
+  servlet:
+    context-path: /utility-meter-service
+
+# Keycloak Configuration
+keycloak:
+  auth-server-url: http://localhost:8090
+  realm: meter-readings
+  resource: meter-api
+  public-client: false
+  credentials:
+    secret: ${KEYCLOAK_CLIENT_SECRET:your-client-secret-here}
+  ssl-required: none
+
+# Application specific settings
+app:
+  security:
+    jwt:
+      issuer-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}
+      jwk-set-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/certs
+    public-endpoints:
+      - /actuator/health/**
+      - /actuator/info
+      - /v3/api-docs/**
+      - /swagger-ui/**
+      - /swagger-ui.html
+    admin-roles:
+      - admin
+      - system-admin
+    user-roles:
+      - user
+      - admin
+
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: when-authorized
+      probes:
+        enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: ${spring.application.name}
+  info:
+    env:
+      enabled: true
+
+# Logging Configuration
+logging:
+  level:
+    root: INFO
+    com.meter: DEBUG
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/meter-readings.log
+    max-size: 10MB
+    max-history: 30
