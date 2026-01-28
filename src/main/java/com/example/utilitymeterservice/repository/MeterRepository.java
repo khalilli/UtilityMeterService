@@ -4,9 +4,15 @@ import com.example.utilitymeterservice.model.entity.Meter;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
 public interface MeterRepository extends JpaRepository<Meter, UUID> {
     boolean existsByMeterNumber(String meterNumber);
+
+    List<Meter> findAllByUserId(String userId);
+
+    Optional<Meter> findByIdAndUserId(UUID id, String userId);
 }

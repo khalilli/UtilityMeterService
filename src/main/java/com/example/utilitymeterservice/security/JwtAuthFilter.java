@@ -45,22 +45,37 @@ public class JwtAuthFilter implements Filter {
 
         String authHeader = http.getHeader("Authorization");
 
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            res.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            res.getWriter().write("Missing Authorization header");
-            return;
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            String token = authHeader.substring(7);
+            try {
+                JwtUser user = jwtService.parseToken(token);
+                http.setAttribute("user", user);
+            } catch (Exception e) {
+                // Let Spring handle 401 via exception handler
+                throw new RuntimeException("Invalid or expired token");
+            }
+        } else {
+            throw new RuntimeException("Missing Authorization header");
         }
 
-        String token = authHeader.substring(7);
+        chain.doFilter(request, response);
 
-        try {
-            JwtUser user = jwtService.parseToken(token);
-            http.setAttribute("user", user);
-            chain.doFilter(request, response);
-        } catch (Exception e) {
-            log.error("JWT validation failed", e);
-            res.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            res.getWriter().write("Invalid or expired token");
-        }
+//        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+//            res.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+//            res.getWriter().write("Missing Authorization header");
+//            return;
+//        }
+//
+//        String token = authHeader.substring(7);
+//
+//        try {
+//            JwtUser user = jwtService.parseToken(token);
+//            http.setAttribute("user", user);
+//            chain.doFilter(request, response);
+//        } catch (Exception e) {
+//            log.error("JWT validation failed", e);
+//            res.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+//            res.getWriter().write("Invalid or expired token");
+//        }
     }
 }

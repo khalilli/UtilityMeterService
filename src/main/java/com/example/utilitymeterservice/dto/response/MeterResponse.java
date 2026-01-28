@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Builder
@@ -26,9 +27,9 @@ public record MeterResponse(
         String unitOfMeasurement,
 
         @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-        LocalDate createdAt,
+        LocalDateTime createdAt,
 
         @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-        LocalDate updatedAt
+        LocalDateTime updatedAt
 ) {
 }
