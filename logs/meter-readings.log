@@ -1,0 +1,245 @@
+2026-01-29 00:00:55 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-29 00:00:55 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-01-29 00:00:55 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-29 00:00:55 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-01-29 00:00:55 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-01-29 00:00:58 [main] INFO  c.e.u.UtilityMeterServiceApplication - Starting UtilityMeterServiceApplication using Java 24.0.1 with PID 19854 (/Users/asmar/Downloads/utility-meter-service/target/classes started by asmar in /Users/asmar/Downloads/utility-meter-service)
+2026-01-29 00:00:58 [main] INFO  c.e.u.UtilityMeterServiceApplication - The following 1 profile is active: "docker"
+2026-01-29 00:00:58 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-29 00:00:58 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 22 ms. Found 2 JPA repository interfaces.
+2026-01-29 00:00:58 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-01-29 00:00:58 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-01-29 00:00:58 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-29 00:00:58 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 885 ms
+2026-01-29 00:00:59 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-01-29 00:00:59 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2474df51
+2026-01-29 00:00:59 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-01-29 00:00:59 [main] INFO  liquibase.database - Set default schema name to public
+2026-01-29 00:00:59 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2026-01-29 00:00:59 [main] INFO  liquibase.ui - Database is up to date, no changesets to execute
+2026-01-29 00:00:59 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2026-01-29 00:00:59 [main] INFO  liquibase.util - UPDATE SUMMARY
+2026-01-29 00:00:59 [main] INFO  liquibase.util - Run:                          0
+2026-01-29 00:00:59 [main] INFO  liquibase.util - Previously run:               4
+2026-01-29 00:00:59 [main] INFO  liquibase.util - Filtered out:                 0
+2026-01-29 00:00:59 [main] INFO  liquibase.util - -------------------------------
+2026-01-29 00:00:59 [main] INFO  liquibase.util - Total change sets:            4
+2026-01-29 00:00:59 [main] INFO  liquibase.util - Update summary generated
+2026-01-29 00:00:59 [main] INFO  liquibase.command - Command execution complete
+2026-01-29 00:01:01 [main] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-29 00:01:01 [main] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-01-29 00:01:01 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-29 00:01:01 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-29 00:01:01 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/utility_meter_db]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.5
+	Default catalog/schema: utility_meter_db/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-29 00:01:01 [main] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-29 00:01:01 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-29 00:01:01 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-29 00:01:02 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-29 00:01:02 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2026-01-29 00:01:02 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/utility-meter-service'
+2026-01-29 00:01:02 [main] INFO  c.e.u.UtilityMeterServiceApplication - Started UtilityMeterServiceApplication in 4.775 seconds (process running for 5.021)
+2026-01-29 00:01:22 [http-nio-8081-exec-2] INFO  o.a.c.c.C.[.[.[/utility-meter-service] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-29 00:01:22 [http-nio-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-01-29 00:01:22 [http-nio-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-01-29 00:01:22 [http-nio-8081-exec-2] INFO  c.e.u.security.JwtService - Token header: {"kid":"puyk01O1XFrr-6Cg-NgVG1bYa2rlScFO03T9Oe53eIE","typ":"JWT","alg":"RS256"}
+2026-01-29 00:01:22 [http-nio-8081-exec-2] INFO  c.e.u.security.JwtService - Token claims: {sub=992b85d3-1978-4939-a48c-9cca64b4ca2a, resource_access={account={roles=[manage-account, manage-account-links, view-profile]}}, email_verified=true, allowed-origins=[/*], iss=http://localhost:8080/realms/utility-meter, typ=Bearer, preferred_username=tynna, given_name=Tynna, sid=08aa156b-2427-4803-a9f0-4e5b64c56d5d, aud=account, acr=1, realm_access={roles=[default-roles-utility-meter, offline_access, uma_authorization, USER]}, azp=meter-api, scope=profile email, name=Tynna Test, exp=1769630772, session_state=08aa156b-2427-4803-a9f0-4e5b64c56d5d, iat=1769630472, family_name=Test, jti=d9c1f83e-0d0e-481b-86c4-c362be066f27, email=tynna596@gmail.com}
+2026-01-29 00:01:22 [http-nio-8081-exec-2] INFO  c.e.u.service.impl.MeterServiceImpl - Creating meter for user: 992b85d3-1978-4939-a48c-9cca64b4ca2a
+2026-01-29 00:01:22 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - select m1_0.id from meters m1_0 where m1_0.meter_number=? fetch first ? rows only
+2026-01-29 00:01:22 [http-nio-8081-exec-2] INFO  c.e.u.service.impl.MeterServiceImpl - Meter created successfully with ID: de76d2fa-516f-4794-995a-fd8147a67530
+2026-01-29 00:01:22 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - insert into meters (created_at,installation_date,meter_number,status,meter_type,unit_of_measurement,updated_at,user_id,id) values (?,?,?,?,?,?,?,?,?)
+2026-01-29 00:01:22 [http-nio-8081-exec-2] WARN  org.hibernate.orm.jdbc.error - HHH000247: ErrorCode: 0, SQLState: 42804
+2026-01-29 00:01:22 [http-nio-8081-exec-2] WARN  org.hibernate.orm.jdbc.error - ERROR: column "meter_type" is of type meter_type but expression is of type character varying
+  Hint: You will need to rewrite or cast the expression.
+  Position: 144
+2026-01-29 00:01:22 [http-nio-8081-exec-2] ERROR c.e.u.security.JwtAuthFilter - JWT validation failed
+jakarta.servlet.ServletException: Request processing failed: org.springframework.dao.InvalidDataAccessResourceUsageException: could not execute statement [ERROR: column "meter_type" is of type meter_type but expression is of type character varying
+  Hint: You will need to rewrite or cast the expression.
+  Position: 144] [insert into meters (created_at,installation_date,meter_number,status,meter_type,unit_of_measurement,updated_at,user_id,id) values (?,?,?,?,?,?,?,?,?)]; SQL [insert into meters (created_at,installation_date,meter_number,status,meter_type,unit_of_measurement,updated_at,user_id,id) values (?,?,?,?,?,?,?,?,?)]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:649)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:128)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at com.example.utilitymeterservice.security.JwtAuthFilter.doFilter(JwtAuthFilter.java:59)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1778)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+Caused by: org.springframework.dao.InvalidDataAccessResourceUsageException: could not execute statement [ERROR: column "meter_type" is of type meter_type but expression is of type character varying
+  Hint: You will need to rewrite or cast the expression.
+  Position: 144] [insert into meters (created_at,installation_date,meter_number,status,meter_type,unit_of_measurement,updated_at,user_id,id) values (?,?,?,?,?,?,?,?,?)]; SQL [insert into meters (created_at,installation_date,meter_number,status,meter_type,unit_of_measurement,updated_at,user_id,id) values (?,?,?,?,?,?,?,?,?)]
+	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.convertHibernateAccessException(HibernateExceptionTranslator.java:156)
+	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.convertHibernateAccessException(HibernateExceptionTranslator.java:131)
+	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.translateExceptionIfPossible(HibernateExceptionTranslator.java:105)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:199)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:557)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:794)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:757)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:687)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:408)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:130)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:719)
+	at com.example.utilitymeterservice.service.impl.MeterServiceImpl$$SpringCGLIB$$0.createMeter(<generated>)
+	at com.example.utilitymeterservice.controller.MeterController.createMeter(MeterController.java:42)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:934)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:853)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:86)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1003)
+	... 37 common frames omitted
+Caused by: org.hibernate.exception.SQLGrammarException: could not execute statement [ERROR: column "meter_type" is of type meter_type but expression is of type character varying
+  Hint: You will need to rewrite or cast the expression.
+  Position: 144] [insert into meters (created_at,installation_date,meter_number,status,meter_type,unit_of_measurement,updated_at,user_id,id) values (?,?,?,?,?,?,?,?,?)]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:63)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:34)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:115)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:184)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.performNonBatchedMutation(AbstractMutationExecutor.java:145)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:53)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:66)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:180)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:120)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:93)
+	at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:108)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:634)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:505)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:381)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:40)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:138)
+	at org.hibernate.internal.SessionImpl.fireFlush(SessionImpl.java:1489)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:481)
+	at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:2116)
+	at org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:2038)
+	at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:410)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:166)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commitNoRollbackOnly(JdbcResourceLocalTransactionCoordinatorImpl.java:248)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:242)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:89)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:553)
+	... 57 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ERROR: column "meter_type" is of type meter_type but expression is of type character varying
+  Hint: You will need to rewrite or cast the expression.
+  Position: 144
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2846)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2531)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:429)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:526)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:436)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+	at org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:157)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:181)
+	... 80 common frames omitted
+2026-01-29 00:01:48 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-29 00:01:48 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-01-29 00:01:48 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-29 00:01:48 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-01-29 00:01:48 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-01-29 00:01:51 [main] INFO  c.e.u.UtilityMeterServiceApplication - Starting UtilityMeterServiceApplication using Java 24.0.1 with PID 19900 (/Users/asmar/Downloads/utility-meter-service/target/classes started by asmar in /Users/asmar/Downloads/utility-meter-service)
+2026-01-29 00:01:51 [main] INFO  c.e.u.UtilityMeterServiceApplication - The following 1 profile is active: "docker"
+2026-01-29 00:01:52 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-29 00:01:52 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 58 ms. Found 2 JPA repository interfaces.
+2026-01-29 00:01:52 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-01-29 00:01:52 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-01-29 00:01:52 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-29 00:01:52 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1190 ms
+2026-01-29 00:01:53 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-01-29 00:01:53 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@211da640
+2026-01-29 00:01:53 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-01-29 00:01:53 [main] INFO  liquibase.database - Set default schema name to public
+2026-01-29 00:01:53 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2026-01-29 00:01:53 [main] INFO  liquibase.ui - Database is up to date, no changesets to execute
+2026-01-29 00:01:53 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2026-01-29 00:01:53 [main] INFO  liquibase.util - UPDATE SUMMARY
+2026-01-29 00:01:53 [main] INFO  liquibase.util - Run:                          0
+2026-01-29 00:01:53 [main] INFO  liquibase.util - Previously run:               4
+2026-01-29 00:01:53 [main] INFO  liquibase.util - Filtered out:                 0
+2026-01-29 00:01:53 [main] INFO  liquibase.util - -------------------------------
+2026-01-29 00:01:53 [main] INFO  liquibase.util - Total change sets:            4
+2026-01-29 00:01:53 [main] INFO  liquibase.util - Update summary generated
+2026-01-29 00:01:53 [main] INFO  liquibase.command - Command execution complete
+2026-01-29 00:01:55 [main] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-29 00:01:55 [main] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-01-29 00:01:55 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-29 00:01:55 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-29 00:01:55 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/utility_meter_db]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.5
+	Default catalog/schema: utility_meter_db/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-29 00:01:56 [main] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-29 00:01:56 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-29 00:01:56 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-29 00:01:56 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-29 00:01:56 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2026-01-29 00:01:56 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/utility-meter-service'
+2026-01-29 00:01:56 [main] INFO  c.e.u.UtilityMeterServiceApplication - Started UtilityMeterServiceApplication in 5.556 seconds (process running for 5.864)
+2026-01-29 00:02:03 [http-nio-8081-exec-2] INFO  o.a.c.c.C.[.[.[/utility-meter-service] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-29 00:02:03 [http-nio-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-01-29 00:02:03 [http-nio-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 15 ms
+2026-01-29 00:02:03 [http-nio-8081-exec-2] INFO  c.e.u.security.JwtService - Token header: {"kid":"puyk01O1XFrr-6Cg-NgVG1bYa2rlScFO03T9Oe53eIE","typ":"JWT","alg":"RS256"}
+2026-01-29 00:02:03 [http-nio-8081-exec-2] INFO  c.e.u.security.JwtService - Token claims: {sub=992b85d3-1978-4939-a48c-9cca64b4ca2a, resource_access={account={roles=[manage-account, manage-account-links, view-profile]}}, email_verified=true, allowed-origins=[/*], iss=http://localhost:8080/realms/utility-meter, typ=Bearer, preferred_username=tynna, given_name=Tynna, sid=08aa156b-2427-4803-a9f0-4e5b64c56d5d, aud=account, acr=1, realm_access={roles=[default-roles-utility-meter, offline_access, uma_authorization, USER]}, azp=meter-api, scope=profile email, name=Tynna Test, exp=1769630772, session_state=08aa156b-2427-4803-a9f0-4e5b64c56d5d, iat=1769630472, family_name=Test, jti=d9c1f83e-0d0e-481b-86c4-c362be066f27, email=tynna596@gmail.com}
+2026-01-29 00:02:03 [http-nio-8081-exec-2] INFO  c.e.u.service.impl.MeterServiceImpl - Creating meter for user: 992b85d3-1978-4939-a48c-9cca64b4ca2a
+2026-01-29 00:02:03 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - select m1_0.id from meters m1_0 where m1_0.meter_number=? fetch first ? rows only
+2026-01-29 00:02:03 [http-nio-8081-exec-2] INFO  c.e.u.service.impl.MeterServiceImpl - Meter created successfully with ID: c702f96d-6589-4237-8dbd-3da72f1c7051
+2026-01-29 00:02:03 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - insert into meters (created_at,installation_date,meter_number,status,meter_type,unit_of_measurement,updated_at,user_id,id) values (?,?,?,?,?,?,?,?,?)
+2026-01-29 00:02:34 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-29 00:02:34 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-01-29 00:02:34 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-29 00:02:34 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-01-29 00:02:34 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

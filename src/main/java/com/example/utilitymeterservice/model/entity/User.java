@@ -40,8 +40,8 @@ public class User {
     @Column(name = "keycloak_user_id", nullable = false, unique = true)
     private UUID keycloak_user_id;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
-    private List<Meter> meters = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
+//    private List<Meter> meters = new ArrayList<>();
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)

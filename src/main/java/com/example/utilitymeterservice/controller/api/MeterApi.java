@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,6 +38,7 @@ public interface MeterApi {
     )
     @PostMapping
     ResponseEntity<MeterResponse> createMeter(
+            HttpServletRequest request,
             @Valid
             @RequestBody(
                     description = "Meter creation request",
@@ -45,7 +47,6 @@ public interface MeterApi {
                             schema = @Schema(implementation = CreateMeterRequest.class)
                     )
             )
-            CreateMeterRequest request,
-            @RequestHeader UUID userId
+            CreateMeterRequest createMeterRequest
     );
 }

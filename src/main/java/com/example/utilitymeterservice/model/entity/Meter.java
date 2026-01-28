@@ -21,7 +21,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -31,7 +33,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "meters", indexes = {
-        @Index(name = "idx_user_id", columnList = "user_id"),
+        @Index(name = "idx_meters_user_id", columnList = "user_id"),
         @Index(name = "idx_meter_number", columnList = "meter_number")
 })
 @Getter
@@ -44,12 +46,11 @@ public class Meter {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @Column(name = "user_id", nullable = false)
+    private String userId;
 
-    @Column(name = "meter_type", nullable = false)
-    @Enumerated(EnumType.STRING)
+    @Column(name = "meter_type", columnDefinition = "meter_type", nullable = false)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
     private MeterType meterType;
 
     @Column(name = "meter_number", nullable = false, unique = true)
@@ -61,8 +62,8 @@ public class Meter {
     @Column(name = "installation_date", nullable = false)
     private LocalDate installationDate;
 
-    @Column(name = "status", nullable = false)
-    @Enumerated(EnumType.STRING)
+    @Column(name = "status", columnDefinition = "meter_status", nullable = false)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
     private MeterStatus meterStatus;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "meter")
