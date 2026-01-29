@@ -14,7 +14,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         jdbc.time.zone: UTC
@@ -41,9 +41,9 @@ server:
 
 # Keycloak Configuration
 keycloak:
-  auth-server-url: http://localhost:8090
-  realm: meter-readings
-  resource: meter-api
+  auth-server-url: ${KEYCLOAK_AUTH_SERVER_URL:http://localhost:8080}
+  realm: ${KEYCLOAK_REALM:meter-readings}
+  resource: ${KEYCLOAK_RESOURCE:meter-api}
   public-client: false
   credentials:
     secret: ${KEYCLOAK_CLIENT_SECRET:your-client-secret-here}
@@ -81,20 +81,21 @@ management:
       probes:
         enabled: true
   metrics:
-    export:
-      prometheus:
-        enabled: true
     tags:
       application: ${spring.application.name}
   info:
     env:
       enabled: true
+  prometheus:
+    metrics:
+      export:
+        enabled: true
 
 # Logging Configuration
 logging:
   level:
     root: INFO
-    com.meter: DEBUG
+    com.example.utilitymeterservice: DEBUG
     org.springframework.web: INFO
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE

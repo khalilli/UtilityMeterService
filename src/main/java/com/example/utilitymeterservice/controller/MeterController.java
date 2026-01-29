@@ -5,11 +5,14 @@ import com.example.utilitymeterservice.dto.JwtUser;
 import com.example.utilitymeterservice.dto.request.CreateMeterRequest;
 import com.example.utilitymeterservice.dto.request.UpdateMeterRequest;
 import com.example.utilitymeterservice.dto.response.MeterResponse;
+import com.example.utilitymeterservice.security.JwtAuthFilter;
+import com.example.utilitymeterservice.security.JwtService;
 import com.example.utilitymeterservice.service.MeterService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +26,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * REST controller for meter management endpoints.
+ */
 @RestController
 @RequestMapping("/api/meters")
 @RequiredArgsConstructor
@@ -31,31 +37,24 @@ public class MeterController implements MeterApi {
 
     private final MeterService meterService;
 
+    private final JwtService jwtService;
+
     @Override
     @PostMapping
     public ResponseEntity<MeterResponse> createMeter(HttpServletRequest request, @Valid @RequestBody CreateMeterRequest createMeterRequest) {
-        JwtUser user = (JwtUser) request.getAttribute("user");
-
-        if (user == null) {
-            return ResponseEntity.status(401).build();
-        }
-
-        return ResponseEntity.ok(meterService.createMeter(createMeterRequest, user.userId()));
+        JwtUser user = (JwtUser) request.getAttribute(JwtAuthFilter.USER_ATTRIBUTE);
+        return ResponseEntity.status(HttpStatus.CREATED).body(meterService.createMeter(createMeterRequest, user.userId()));
     }
 
     @GetMapping
     public ResponseEntity<List<MeterResponse>> getAllMeters(HttpServletRequest request) {
-        JwtUser user = (JwtUser) request.getAttribute("user");
-        if (user == null) return ResponseEntity.status(401).build();
-
+        JwtUser user = (JwtUser) request.getAttribute(JwtAuthFilter.USER_ATTRIBUTE);
         return ResponseEntity.ok(meterService.getAllMeters(user.userId()));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<MeterResponse> getMeterById(HttpServletRequest request, @PathVariable UUID id) {
-        JwtUser user = (JwtUser) request.getAttribute("user");
-        if (user == null) return ResponseEntity.status(401).build();
-
+        JwtUser user = (JwtUser) request.getAttribute(JwtAuthFilter.USER_ATTRIBUTE);
         return ResponseEntity.ok(meterService.getMeterById(id, user.userId()));
     }
 
@@ -65,17 +64,13 @@ public class MeterController implements MeterApi {
             @PathVariable UUID id,
             @Valid @RequestBody UpdateMeterRequest updateMeterRequest) {
 
-        JwtUser user = (JwtUser) request.getAttribute("user");
-        if (user == null) return ResponseEntity.status(401).build();
-
+        JwtUser user = (JwtUser) request.getAttribute(JwtAuthFilter.USER_ATTRIBUTE);
         return ResponseEntity.ok(meterService.updateMeter(id, updateMeterRequest, user.userId()));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deactivateMeter(HttpServletRequest request, @PathVariable UUID id) {
-        JwtUser user = (JwtUser) request.getAttribute("user");
-        if (user == null) return ResponseEntity.status(401).build();
-
+        JwtUser user = (JwtUser) request.getAttribute(JwtAuthFilter.USER_ATTRIBUTE);
         meterService.deactivateMeter(id, user.userId());
         return ResponseEntity.noContent().build();
     }

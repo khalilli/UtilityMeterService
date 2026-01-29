@@ -4,19 +4,26 @@ import com.example.utilitymeterservice.dto.request.CreateMeterRequest;
 import com.example.utilitymeterservice.dto.request.UpdateMeterRequest;
 import com.example.utilitymeterservice.dto.response.MeterResponse;
 import com.example.utilitymeterservice.exceptions.DuplicateMeterNumberException;
+import com.example.utilitymeterservice.exceptions.MeterNotFoundException;
 import com.example.utilitymeterservice.mapper.MeterMapper;
 import com.example.utilitymeterservice.model.entity.Meter;
 import com.example.utilitymeterservice.model.enums.MeterStatus;
 import com.example.utilitymeterservice.repository.MeterRepository;
 import com.example.utilitymeterservice.service.MeterService;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Implementation of {@link MeterService} providing CRUD operations for meters.
+ *
+ * <p>All public methods are transactional and perform basic authorization
+ * checks via the calling code (userId passed from controller).
+ */
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -43,8 +50,9 @@ public class MeterServiceImpl implements MeterService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<MeterResponse> getAllMeters(String userId) {
+        log.debug("Fetching all meters for user: {}", userId);
         return meterRepository.findAllByUserId(userId)
                 .stream()
                 .map(meterMapper::toResponse)
@@ -52,18 +60,20 @@ public class MeterServiceImpl implements MeterService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public MeterResponse getMeterById(UUID meterId, String userId) {
+        log.debug("Fetching meter {} for user: {}", meterId, userId);
         Meter meter = meterRepository.findByIdAndUserId(meterId, userId)
-                .orElseThrow(() -> new RuntimeException("Meter not found"));
+                .orElseThrow(() -> new MeterNotFoundException("Meter not found with ID: " + meterId));
         return meterMapper.toResponse(meter);
     }
 
     @Override
     @Transactional
     public MeterResponse updateMeter(UUID meterId, UpdateMeterRequest request, String userId) {
+        log.info("Updating meter {} for user: {}", meterId, userId);
         Meter meter = meterRepository.findByIdAndUserId(meterId, userId)
-                .orElseThrow(() -> new RuntimeException("Meter not found"));
+                .orElseThrow(() -> new MeterNotFoundException("Meter not found with ID: " + meterId));
 
         meterMapper.updateMeterFromRequest(request, meter);
         Meter updated = meterRepository.save(meter);
@@ -74,8 +84,9 @@ public class MeterServiceImpl implements MeterService {
     @Override
     @Transactional
     public void deactivateMeter(UUID meterId, String userId) {
+        log.info("Deactivating meter {} for user: {}", meterId, userId);
         Meter meter = meterRepository.findByIdAndUserId(meterId, userId)
-                .orElseThrow(() -> new RuntimeException("Meter not found"));
+                .orElseThrow(() -> new MeterNotFoundException("Meter not found with ID: " + meterId));
 
         meter.setMeterStatus(MeterStatus.INACTIVE);
         meterRepository.save(meter);
