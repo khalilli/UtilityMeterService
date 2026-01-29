@@ -11,10 +11,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
-import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.DecimalMin;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -30,6 +31,7 @@ import java.util.UUID;
                 @Index(name = "idx_meter_reading_date", columnList = "meter_id, reading_date DESC")
         })
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class MeterReading {
@@ -43,7 +45,7 @@ public class MeterReading {
     private Meter meter;
 
     @Column(name = "reading_value", nullable = false)
-    @Min(0)
+    @DecimalMin(value = "0.0", inclusive = true)
     private BigDecimal readingValue;
 
     @Column(name = "consumption")

@@ -1,6 +1,6 @@
 package com.example.utilitymeterservice.dto.request;
 
-import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 
@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Builder
 public record UpdateMeterReadingRequest (
         @NotNull
-        @Min(0)
+        @DecimalMin(value = "0.0", inclusive = true)
         BigDecimal readingValue,
 
         LocalDate readingDate

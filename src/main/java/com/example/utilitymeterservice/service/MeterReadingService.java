@@ -4,8 +4,8 @@ import com.example.utilitymeterservice.dto.request.CreateMeterReadingRequest;
 import com.example.utilitymeterservice.dto.request.UpdateMeterReadingRequest;
 import com.example.utilitymeterservice.dto.response.MeterReadingResponse;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.awt.print.Pageable;
 import java.util.UUID;
 
 public interface MeterReadingService {

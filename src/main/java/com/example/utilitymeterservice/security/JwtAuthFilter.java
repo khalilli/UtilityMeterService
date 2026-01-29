@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.web.util.ContentCachingRequestWrapper;
 
 import java.io.IOException;
 
@@ -29,53 +30,35 @@ public class JwtAuthFilter implements Filter {
             FilterChain chain
     ) throws IOException, ServletException {
 
-        HttpServletRequest http = (HttpServletRequest) request;
+        ContentCachingRequestWrapper wrappedRequest =
+                new ContentCachingRequestWrapper((HttpServletRequest) request, 1024 * 1024);
+
         HttpServletResponse res = (HttpServletResponse) response;
+        String path = wrappedRequest.getRequestURI();
 
-        String path = http.getRequestURI();
-
-        // Allow public endpoints (health, swagger, etc.)
+        // Allow public endpoints
         if (path.startsWith("/actuator")
                 || path.startsWith("/swagger")
                 || path.startsWith("/swagger-ui")
                 || path.startsWith("/v3/api-docs")) {
-            chain.doFilter(request, response);
+            chain.doFilter(wrappedRequest, response);
             return;
         }
 
-        String authHeader = http.getHeader("Authorization");
+        String authHeader = wrappedRequest.getHeader("Authorization");
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.substring(7);
             try {
                 JwtUser user = jwtService.parseToken(token);
-                http.setAttribute("user", user);
+                wrappedRequest.setAttribute("user", user);
             } catch (Exception e) {
-                // Let Spring handle 401 via exception handler
                 throw new RuntimeException("Invalid or expired token");
             }
         } else {
             throw new RuntimeException("Missing Authorization header");
         }
 
-        chain.doFilter(request, response);
-
-//        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-//            res.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-//            res.getWriter().write("Missing Authorization header");
-//            return;
-//        }
-//
-//        String token = authHeader.substring(7);
-//
-//        try {
-//            JwtUser user = jwtService.parseToken(token);
-//            http.setAttribute("user", user);
-//            chain.doFilter(request, response);
-//        } catch (Exception e) {
-//            log.error("JWT validation failed", e);
-//            res.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-//            res.getWriter().write("Invalid or expired token");
-//        }
+        chain.doFilter(wrappedRequest, response);
     }
 }
